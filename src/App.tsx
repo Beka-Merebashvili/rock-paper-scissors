@@ -1,9 +1,12 @@
+import Globalstyles from "./styled-components/Globalstyles"
 
 function App() {
  
 
   return (
-    <div>jeranski</div>
+    <>
+    <Globalstyles />
+    </>
   )
 }
 
