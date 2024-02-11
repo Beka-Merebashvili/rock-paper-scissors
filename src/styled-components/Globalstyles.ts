@@ -6,10 +6,13 @@ const Globalstyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    /* font-family: 'Space Grotesk', sans-serif; */
+    font-family: 'Space Grotesk', sans-serif;
 }
 body {
     background: #13335E;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 `
 
