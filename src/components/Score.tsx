@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import logo from "../images/logo.svg";
 
 const Score = () => {
   return (
     <StyledDiv>
-      <h2>rock paper scissors</h2>
+        <div className="logo">
+        <img src={logo} alt="" />
+        </div>
+     
       <div className="scoreBox">
         <p className="score">SCORE</p>
         <p className="number">11</p>
@@ -21,12 +25,12 @@ const StyledDiv = styled.div`
   border: 2px solid #707070;
   border-radius: 6px;
   padding: 0 18px;
-  margin-top: 30px;
-  h2 {
-    font-size: 16px;
-    color: #ffffff;
+  margin : 30px 0 100px 0;
+  .logo {
     width: 84px;
-    text-transform: uppercase;
+  }
+  .logo img {
+    width: 100%;
   }
   .scoreBox {
     width: 80px;
@@ -41,7 +45,7 @@ const StyledDiv = styled.div`
   }
   .score {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: bold;
     color: #2a45c2;
     letter-spacing: 2px;
   }
