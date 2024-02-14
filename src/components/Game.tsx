@@ -43,29 +43,57 @@ const Game: React.FC = () => {
       setResult('Bot wins!');
     }
   };
-
+const getImagePath = (choice: Choice): string => {
+  // You may need to adjust the path based on your project structure
+  switch (choice) {
+    case 'rock':
+      return rock;
+    case 'paper':
+      return paper;
+    case 'scissors':
+      return scissors;
+    default:
+      return '';
+  }
+};
 
 
   return (
-    <StyledGame>
+    <>
+    {playerChoice ?  null : <StyledGame>
       <div className="container paper">
-        <div className="bg">
+        <div onClick={() => handlePlayerChoice('paper')} className="bg">
           <img src={paper} alt="paperIcon" />
         </div>
       </div>
-      <div className="container scissors">
+      <div onClick={() => handlePlayerChoice('scissors')} className="container scissors">
         <div className="bg">
           <img src={scissors} alt="scissorsIcon" />
         </div>
       </div>
-      <div className="container rock">
+      <div onClick={() => handlePlayerChoice('rock')} className="container rock">
         <div className="bg">
           <img src={rock} alt="rockIcon" />
         </div>
       </div>
-    </StyledGame>
+    </StyledGame>}
+    
+    {playerChoice && botChoice && (
+        <div className="result">
+          <p>You chose:</p>
+          <img src={getImagePath(playerChoice)} alt={playerChoice} />
+          <p>Bot chose:</p>
+          <img src={getImagePath(botChoice)} alt={botChoice} />
+          <p>{result}</p>
+
+          
+        </div>
+      )}
+    </>
   );
 };
+
+
 
 const StyledGame = styled.div`
   width: 312px;
