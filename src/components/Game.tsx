@@ -3,8 +3,49 @@ import triangle from "../images/bg-triangle.svg";
 import paper from "../images/icon-paper.svg";
 import scissors from "../images/icon-scissors.svg";
 import rock from "../images/icon-rock.svg";
+import { useState } from "react";
 
-const Game = () => {
+type Choice = 'rock' | 'paper' | 'scissors';
+
+const choices: Choice[] = ['rock', 'paper', 'scissors'];
+
+const getRandomChoice = (): Choice => {
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
+};
+
+const Game: React.FC = () => {
+ const [playerChoice, setPlayerChoice] = useState<Choice | null>(null);
+  const [botChoice, setBotChoice] = useState<Choice | null>(null);
+  const [result, setResult] = useState<string | null>(null);
+
+   const handlePlayerChoice = (choice: Choice) => {
+    
+    setPlayerChoice(choice);
+
+   
+    const botChoice = getRandomChoice();
+    setBotChoice(botChoice);
+
+    determineResult(choice, botChoice);
+  };
+
+  const determineResult = (player: Choice, bot: Choice) => {
+    if (player === bot) {
+      setResult("It's a tie!");
+    } else if (
+      (player === 'rock' && bot === 'scissors') ||
+      (player === 'paper' && bot === 'rock') ||
+      (player === 'scissors' && bot === 'paper')
+    ) {
+      setResult('You win!');
+    } else {
+      setResult('Bot wins!');
+    }
+  };
+
+
+
   return (
     <StyledGame>
       <div className="container paper">
