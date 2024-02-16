@@ -72,7 +72,6 @@ const Game: React.FC = () => {
         return null;
     }
   };
- 
 
   return (
     <>
@@ -80,7 +79,7 @@ const Game: React.FC = () => {
         <StyledGame>
           <PaperWrapper onClick={() => handlePlayerChoice("paper")}>
             <div className="bg">
-            <img src={paper} alt="paperIcon" />
+              <img src={paper} alt="paperIcon" />
             </div>
           </PaperWrapper>
           <ScissorWrapper onClick={() => handlePlayerChoice("scissors")}>
@@ -96,23 +95,27 @@ const Game: React.FC = () => {
         </StyledGame>
       )}
 
-{playerChoice && botChoice && (
+      {playerChoice && botChoice && (
         <ResultContainer>
-          <div>
-            <p>You chose:</p>
-            {renderChoice(playerChoice)}
+          <div className="renderChoise">
+            <div className="choise">
+              {renderChoice(playerChoice)}
+              <p>you picked</p>
+            </div>
+            <div className="choise">
+              {renderChoice(botChoice)}
+              <p>bot picked</p>
+            </div>
           </div>
-          <div>
-            <p>Bot chose:</p>
-            {renderChoice(botChoice)}
+          <div className="result">
+            <p>{result}</p>
+            <button onClick={() => setPlayerChoice(null)}>play again</button>
           </div>
-          <p>{result}</p>
         </ResultContainer>
       )}
     </>
   );
 };
-
 
 const ResultContainer = styled.div`
   display: flex;
@@ -127,37 +130,81 @@ const ResultContainer = styled.div`
     align-items: center;
     justify-content: center;
   }
+  .renderChoise {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 70px;
+  }
+  .choise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  p {
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+  .renderChoise p {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+  .result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .result p {
+    font-size: 56px;
+  }
+  button {
+  width: 220px;
+  height: 48px;
+  background-color: #F3F3F3;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 550;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #3B4262;
+  cursor: pointer;
+  }
+
+
 `;
 
 const PaperWrapper = styled.div`
   width: 130px;
-    height: 134px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #4664f4;
-`
+  height: 134px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4664f4;
+`;
 
 const ScissorWrapper = styled.div`
   width: 130px;
-    height: 134px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #c76c1b;
-`
+  height: 134px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c76c1b;
+`;
 
 const RockWrapper = styled.div`
-   width: 130px;
-    height: 134px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #9d1634;
-`
+  width: 130px;
+  height: 134px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #9d1634;
+`;
 
 const StyledGame = styled.div`
   width: 312px;
