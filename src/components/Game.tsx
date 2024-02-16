@@ -5,9 +5,9 @@ import scissors from "../images/icon-scissors.svg";
 import rock from "../images/icon-rock.svg";
 import { useState } from "react";
 
-type Choice = 'rock' | 'paper' | 'scissors';
+type Choice = "rock" | "paper" | "scissors";
 
-const choices: Choice[] = ['rock', 'paper', 'scissors'];
+const choices: Choice[] = ["rock", "paper", "scissors"];
 
 const getRandomChoice = (): Choice => {
   const randomIndex = Math.floor(Math.random() * choices.length);
@@ -15,15 +15,13 @@ const getRandomChoice = (): Choice => {
 };
 
 const Game: React.FC = () => {
- const [playerChoice, setPlayerChoice] = useState<Choice | null>(null);
+  const [playerChoice, setPlayerChoice] = useState<Choice | null>(null);
   const [botChoice, setBotChoice] = useState<Choice | null>(null);
   const [result, setResult] = useState<string | null>(null);
 
-   const handlePlayerChoice = (choice: Choice) => {
-    
+  const handlePlayerChoice = (choice: Choice) => {
     setPlayerChoice(choice);
 
-   
     const botChoice = getRandomChoice();
     setBotChoice(botChoice);
 
@@ -34,66 +32,132 @@ const Game: React.FC = () => {
     if (player === bot) {
       setResult("It's a tie!");
     } else if (
-      (player === 'rock' && bot === 'scissors') ||
-      (player === 'paper' && bot === 'rock') ||
-      (player === 'scissors' && bot === 'paper')
+      (player === "rock" && bot === "scissors") ||
+      (player === "paper" && bot === "rock") ||
+      (player === "scissors" && bot === "paper")
     ) {
-      setResult('You win!');
+      setResult("You win!");
     } else {
-      setResult('Bot wins!');
+      setResult("Bot wins!");
     }
   };
-const getImagePath = (choice: Choice): string => {
-  // You may need to adjust the path based on your project structure
-  switch (choice) {
-    case 'rock':
-      return rock;
-    case 'paper':
-      return paper;
-    case 'scissors':
-      return scissors;
-    default:
-      return '';
-  }
-};
 
+  const renderChoice = (choice: Choice) => {
+    switch (choice) {
+      case "paper":
+        return (
+          <PaperWrapper>
+            <div className="bg">
+              <img src={paper} alt="paperIcon" />
+            </div>
+          </PaperWrapper>
+        );
+      case "scissors":
+        return (
+          <ScissorWrapper>
+            <div className="bg">
+              <img src={scissors} alt="scissorsIcon" />
+            </div>
+          </ScissorWrapper>
+        );
+      case "rock":
+        return (
+          <RockWrapper>
+            <div className="bg">
+              <img src={rock} alt="rockIcon" />
+            </div>
+          </RockWrapper>
+        );
+      default:
+        return null;
+    }
+  };
+ 
 
   return (
     <>
-    {playerChoice ?  null : <StyledGame>
-      <div className="container paper">
-        <div onClick={() => handlePlayerChoice('paper')} className="bg">
-          <img src={paper} alt="paperIcon" />
-        </div>
-      </div>
-      <div onClick={() => handlePlayerChoice('scissors')} className="container scissors">
-        <div className="bg">
-          <img src={scissors} alt="scissorsIcon" />
-        </div>
-      </div>
-      <div onClick={() => handlePlayerChoice('rock')} className="container rock">
-        <div className="bg">
-          <img src={rock} alt="rockIcon" />
-        </div>
-      </div>
-    </StyledGame>}
-    
-    {playerChoice && botChoice && (
-        <div className="result">
-          <p>You chose:</p>
-          <img src={getImagePath(playerChoice)} alt={playerChoice} />
-          <p>Bot chose:</p>
-          <img src={getImagePath(botChoice)} alt={botChoice} />
-          <p>{result}</p>
+      {playerChoice ? null : (
+        <StyledGame>
+          <PaperWrapper onClick={() => handlePlayerChoice("paper")}>
+            <div className="bg">
+            <img src={paper} alt="paperIcon" />
+            </div>
+          </PaperWrapper>
+          <ScissorWrapper onClick={() => handlePlayerChoice("scissors")}>
+            <div className="bg">
+              <img src={scissors} alt="scissorsIcon" />
+            </div>
+          </ScissorWrapper>
+          <RockWrapper onClick={() => handlePlayerChoice("rock")}>
+            <div className="bg">
+              <img src={rock} alt="rockIcon" />
+            </div>
+          </RockWrapper>
+        </StyledGame>
+      )}
 
-          
-        </div>
+{playerChoice && botChoice && (
+        <ResultContainer>
+          <div>
+            <p>You chose:</p>
+            {renderChoice(playerChoice)}
+          </div>
+          <div>
+            <p>Bot chose:</p>
+            {renderChoice(botChoice)}
+          </div>
+          <p>{result}</p>
+        </ResultContainer>
       )}
     </>
   );
 };
 
 
+const ResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .bg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const PaperWrapper = styled.div`
+  width: 130px;
+    height: 134px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4664f4;
+`
+
+const ScissorWrapper = styled.div`
+  width: 130px;
+    height: 134px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c76c1b;
+`
+
+const RockWrapper = styled.div`
+   width: 130px;
+    height: 134px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #9d1634;
+`
 
 const StyledGame = styled.div`
   width: 312px;
@@ -106,23 +170,6 @@ const StyledGame = styled.div`
   justify-content: center;
   gap: 52px;
   flex-wrap: wrap;
-  .container {
-    width: 130px;
-    height: 134px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .paper {
-    background-color: #4664f4;
-  }
-  .scissors {
-    background-color: #c76c1b;
-  }
-  .rock {
-    background-color: #9d1634;
-  }
   .bg {
     width: 100px;
     height: 100px;
