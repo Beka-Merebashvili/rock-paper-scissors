@@ -1,4 +1,5 @@
 import Game from "./components/Game"
+import Rules from "./components/Rules"
 import Score from "./components/Score"
 import Globalstyles from "./styled-components/Globalstyles"
 
@@ -10,6 +11,7 @@ function App() {
     <Globalstyles />
     <Score />
     <Game />
+    <Rules />
     </>
   )
 }
