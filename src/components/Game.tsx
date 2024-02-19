@@ -92,6 +92,7 @@ const Game: React.FC = () => {
               <img src={rock} alt="rockIcon" />
             </div>
           </RockWrapper>
+          <button className="rules">rules</button>
         </StyledGame>
       )}
 
@@ -109,8 +110,9 @@ const Game: React.FC = () => {
           </div>
           <div className="result">
             <p>{result}</p>
-            <button onClick={() => setPlayerChoice(null)}>play again</button>
+            <button className="playAgain" onClick={() => setPlayerChoice(null)}>play again</button>
           </div>
+          <button className="rules">rules</button>
         </ResultContainer>
       )}
     </>
@@ -159,7 +161,7 @@ const ResultContainer = styled.div`
   .result p {
     font-size: 56px;
   }
-  button {
+ .playAgain {
   width: 220px;
   height: 48px;
   background-color: #F3F3F3;
@@ -172,7 +174,20 @@ const ResultContainer = styled.div`
   color: #3B4262;
   cursor: pointer;
   }
-
+.rules {
+  width: 128px;
+  height: 40px;
+  background-color: #13335E;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  border-radius : 6px;
+  position: absolute;
+  bottom: 100px;
+}
 
 `;
 
@@ -184,6 +199,7 @@ const PaperWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #4664f4;
+  cursor: pointer;
 `;
 
 const ScissorWrapper = styled.div`
@@ -194,6 +210,7 @@ const ScissorWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #c76c1b;
+  cursor: pointer;
 `;
 
 const RockWrapper = styled.div`
@@ -204,6 +221,7 @@ const RockWrapper = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #9d1634;
+  cursor: pointer;
 `;
 
 const StyledGame = styled.div`
@@ -226,6 +244,21 @@ const StyledGame = styled.div`
     align-items: center;
     justify-content: center;
   }
+  .rules {
+  width: 128px;
+  height: 40px;
+  background-color: #13335E;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  border-radius : 6px;
+  position: absolute;
+  bottom: 100px;
+}
+  
 `;
 
 export default Game;
