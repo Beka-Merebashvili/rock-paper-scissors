@@ -1,8 +1,11 @@
-import styled from "styled-components";
-import triangle from "../images/bg-triangle.svg";
 import paper from "../images/icon-paper.svg";
 import scissors from "../images/icon-scissors.svg";
 import rock from "../images/icon-rock.svg";
+import ResultContainer from "../styled-components/ResultContainer";
+import PaperWrapper from "../styled-components/PaperWrapper";
+import ScissorWrapper from "../styled-components/ScissorWrapper";
+import RockWrapper from "../styled-components/RockWrapper";
+import StyledGame from "../styled-components/StyledGame";
 import { useState } from "react";
 
 interface GameProps {
@@ -133,146 +136,8 @@ const Game: React.FC<GameProps> = (props) => {
   );
 };
 
-const ResultContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .bg {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .renderChoise {
-    display: flex;
-    gap: 50px;
-    margin-bottom: 70px;
-  }
-  .choise {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  p {
-    font-weight: bold;
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-  .renderChoise p {
-    font-size: 15px;
-    letter-spacing: 2px;
-  }
-  .result {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  .result p {
-    font-size: 56px;
-  }
-  .playAgain {
-    width: 220px;
-    height: 48px;
-    background-color: #f3f3f3;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    font-weight: 550;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #3b4262;
-    cursor: pointer;
-  }
-  .rules {
-    width: 128px;
-    height: 40px;
-    background-color: #13335e;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
-    color: #ffffff;
-    text-transform: uppercase;
-    border: 1px solid #ffffff;
-    border-radius: 6px;
-    position: absolute;
-    bottom: 100px;
-    cursor: pointer;
-  }
-`;
 
-const PaperWrapper = styled.div`
-  width: 130px;
-  height: 134px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #4664f4;
-  cursor: pointer;
-`;
 
-const ScissorWrapper = styled.div`
-  width: 130px;
-  height: 134px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #c76c1b;
-  cursor: pointer;
-`;
 
-const RockWrapper = styled.div`
-  width: 130px;
-  height: 134px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #9d1634;
-  cursor: pointer;
-`;
-
-const StyledGame = styled.div`
-  width: 312px;
-  height: 282px;
-  background-image: url(${triangle});
-  background-size: cover;
-  background-position: 0 54px;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  gap: 52px;
-  flex-wrap: wrap;
-  .bg {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .rules {
-    width: 128px;
-    height: 40px;
-    background-color: #13335e;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 2.5px;
-    color: #ffffff;
-    text-transform: uppercase;
-    border: 1px solid #ffffff;
-    border-radius: 6px;
-    position: absolute;
-    bottom: 100px;
-    cursor: pointer;
-  }
-`;
 
 export default Game;
