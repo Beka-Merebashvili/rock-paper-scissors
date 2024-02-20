@@ -5,12 +5,12 @@ import Score from "./components/Score"
 import Globalstyles from "./styled-components/Globalstyles"
 
 function App() {
-  const [rules , setRules] = useState<boolean>(true)
+  const [rules , setRules] = useState<boolean>(false)
   return (
     <>
     <Globalstyles />
     <Score />
-    <Game />
+    <Game setRules={setRules} />
     {rules ? <Rules setRules={setRules}/> : null}
     </>
   )

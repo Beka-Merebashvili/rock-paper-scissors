@@ -14,7 +14,7 @@ const getRandomChoice = (): Choice => {
   return choices[randomIndex];
 };
 
-const Game: React.FC = () => {
+const Game: React.FC<{ setRules: (value: boolean) => void }> = (props) => {
   const [playerChoice, setPlayerChoice] = useState<Choice | null>(null);
   const [botChoice, setBotChoice] = useState<Choice | null>(null);
   const [result, setResult] = useState<string | null>(null);
@@ -92,7 +92,9 @@ const Game: React.FC = () => {
               <img src={rock} alt="rockIcon" />
             </div>
           </RockWrapper>
-          <button className="rules">rules</button>
+          <button className="rules" onClick={() => props.setRules(true)}>
+            rules
+          </button>
         </StyledGame>
       )}
 
@@ -110,9 +112,13 @@ const Game: React.FC = () => {
           </div>
           <div className="result">
             <p>{result}</p>
-            <button className="playAgain" onClick={() => setPlayerChoice(null)}>play again</button>
+            <button className="playAgain" onClick={() => setPlayerChoice(null)}>
+              play again
+            </button>
           </div>
-          <button className="rules">rules</button>
+          <button className="rules" onClick={() => props.setRules(true)}>
+            rules
+          </button>
         </ResultContainer>
       )}
     </>
@@ -161,34 +167,34 @@ const ResultContainer = styled.div`
   .result p {
     font-size: 56px;
   }
- .playAgain {
-  width: 220px;
-  height: 48px;
-  background-color: #F3F3F3;
-  border-radius: 8px;
-  border: none;
-  font-size: 16px;
-  font-weight: 550;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: #3B4262;
-  cursor: pointer;
+  .playAgain {
+    width: 220px;
+    height: 48px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    border: none;
+    font-size: 16px;
+    font-weight: 550;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #3b4262;
+    cursor: pointer;
   }
-.rules {
-  width: 128px;
-  height: 40px;
-  background-color: #13335E;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  color: #ffffff;
-  text-transform: uppercase;
-  border: 1px solid #ffffff;
-  border-radius : 6px;
-  position: absolute;
-  bottom: 100px;
-}
-
+  .rules {
+    width: 128px;
+    height: 40px;
+    background-color: #13335e;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 100px;
+    cursor: pointer;
+  }
 `;
 
 const PaperWrapper = styled.div`
@@ -245,20 +251,20 @@ const StyledGame = styled.div`
     justify-content: center;
   }
   .rules {
-  width: 128px;
-  height: 40px;
-  background-color: #13335E;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  color: #ffffff;
-  text-transform: uppercase;
-  border: 1px solid #ffffff;
-  border-radius : 6px;
-  position: absolute;
-  bottom: 100px;
-}
-  
+    width: 128px;
+    height: 40px;
+    background-color: #13335e;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 100px;
+    cursor: pointer;
+  }
 `;
 
 export default Game;
