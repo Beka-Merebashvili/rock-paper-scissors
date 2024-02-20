@@ -57,6 +57,28 @@ const StyledDiv = styled.div`
     font-size: 40px;
     font-weight: bold;
   }
+
+  @media screen and (min-width: 980px) {
+    width: 700px;
+    height: 150px;
+    .logo {
+    width: 160px;
+  }
+  .scoreBox {
+    width: 150px;
+    height: 114px;
+    gap: 4px;
+    padding-top: 8px;
+  }
+  .score {
+    font-size: 16px;
+    letter-spacing: 2.5px;
+  }
+  .number {
+    font-size: 64px;
+  }
+  }
+ 
 `;
 
 export default Score;
