@@ -5,6 +5,14 @@ import scissors from "../images/icon-scissors.svg";
 import rock from "../images/icon-rock.svg";
 import { useState } from "react";
 
+interface GameProps {
+  setRules: (value: boolean) => void;
+  result: string | null;
+  setResult: (value: string | null) => void;
+  setScore: (value: number) => void;
+  score: number;
+}
+
 type Choice = "rock" | "paper" | "scissors";
 
 const choices: Choice[] = ["rock", "paper", "scissors"];
@@ -14,10 +22,9 @@ const getRandomChoice = (): Choice => {
   return choices[randomIndex];
 };
 
-const Game: React.FC<{ setRules: (value: boolean) => void }> = (props) => {
+const Game: React.FC<GameProps> = (props) => {
   const [playerChoice, setPlayerChoice] = useState<Choice | null>(null);
   const [botChoice, setBotChoice] = useState<Choice | null>(null);
-  const [result, setResult] = useState<string | null>(null);
 
   const handlePlayerChoice = (choice: Choice) => {
     setPlayerChoice(choice);
@@ -30,15 +37,16 @@ const Game: React.FC<{ setRules: (value: boolean) => void }> = (props) => {
 
   const determineResult = (player: Choice, bot: Choice) => {
     if (player === bot) {
-      setResult("It's a tie!");
+      props.setResult("It's a tie!");
     } else if (
       (player === "rock" && bot === "scissors") ||
       (player === "paper" && bot === "rock") ||
       (player === "scissors" && bot === "paper")
     ) {
-      setResult("You win!");
+      props.setResult("You win!");
+      props.setScore(props.score + 1);
     } else {
-      setResult("Bot wins!");
+      props.setResult("Bot wins!");
     }
   };
 
@@ -111,7 +119,7 @@ const Game: React.FC<{ setRules: (value: boolean) => void }> = (props) => {
             </div>
           </div>
           <div className="result">
-            <p>{result}</p>
+            <p>{props.result}</p>
             <button className="playAgain" onClick={() => setPlayerChoice(null)}>
               play again
             </button>

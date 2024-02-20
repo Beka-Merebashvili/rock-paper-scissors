@@ -1,16 +1,19 @@
 import styled from "styled-components";
 import logo from "../images/logo.svg";
 
-const Score = () => {
+interface ScoreProps {
+  score: number;
+}
+
+const Score: React.FC<ScoreProps> = (props) => {
   return (
     <StyledDiv>
-        <div className="logo">
+      <div className="logo">
         <img src={logo} alt="" />
-        </div>
-     
+      </div>
       <div className="scoreBox">
         <p className="score">SCORE</p>
-        <p className="number">11</p>
+        <p className="number">{props.score}</p>
       </div>
     </StyledDiv>
   );
@@ -25,7 +28,7 @@ const StyledDiv = styled.div`
   border: 2px solid #707070;
   border-radius: 6px;
   padding: 0 18px;
-  margin : 30px 0 100px 0;
+  margin: 30px 0 100px 0;
   .logo {
     width: 84px;
   }
@@ -53,7 +56,6 @@ const StyledDiv = styled.div`
     color: #565468;
     font-size: 40px;
     font-weight: bold;
-    /* letter-spacing: -3px; */
   }
 `;
 

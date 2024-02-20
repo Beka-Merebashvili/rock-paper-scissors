@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import rulesImg from "../images/image-rules.svg";
-import closeIcon from "../images/icon-close.svg"
+import closeIcon from "../images/icon-close.svg";
 const Rules: React.FC<{ setRules: (value: boolean) => void }> = (props) => {
   return (
     <RurelsContainer>
       <div className="wrapper">
-        <img className="closeIcon" src={closeIcon} alt="closeIcon" onClick={()=> props.setRules(false)}/>
+        <img
+          className="closeIcon"
+          src={closeIcon}
+          alt="closeIcon"
+          onClick={() => props.setRules(false)}
+        />
         <img src={rulesImg} alt="rulesImg" />
       </div>
     </RurelsContainer>
