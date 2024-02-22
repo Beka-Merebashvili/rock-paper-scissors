@@ -33,6 +33,13 @@ const RurelsContainer = styled.div`
     right: 30px;
     cursor: pointer;
   }
+
+  @media screen and (min-width: 980px) {
+    width: 50%;
+    height: 60vh;
+    top: 20%;
+    left: 25%;
+  }
 `;
 
 export default Rules;

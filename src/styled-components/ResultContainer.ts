@@ -79,6 +79,10 @@ const ResultContainer = styled.div`
     img {
       width: 50%;
     }
+    .rules {
+      bottom: 30px;
+      right: 30px;
+    }
   }
 `;
 

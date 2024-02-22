@@ -36,6 +36,10 @@ const StyledGame = styled.div`
     bottom: 100px;
     cursor: pointer;
   }
+  .rules:hover {
+    background-color: #0e294b;
+    transition: 0.3s;
+  }
 
   @media screen and (min-width: 980px) {
     width: 476px;
@@ -48,6 +52,10 @@ const StyledGame = styled.div`
     }
     img {
       width: 50%;
+    }
+    .rules {
+      bottom: 30px;
+      right: 30px;
     }
   }
 `;
