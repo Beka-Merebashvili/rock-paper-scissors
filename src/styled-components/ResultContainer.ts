@@ -70,6 +70,16 @@ const ResultContainer = styled.div`
     bottom: 100px;
     cursor: pointer;
   }
+
+  @media screen and (min-width: 980px) {
+    .bg {
+      width: 152px;
+      height: 152px;
+    }
+    img {
+      width: 50%;
+    }
+  }
 `;
 
 export default ResultContainer;

@@ -10,6 +10,8 @@ const Globalstyles = createGlobalStyle`
 }
 body {
     background: #13335E;
+}
+main {
     display: flex;
     flex-direction: column;
     align-items: center;

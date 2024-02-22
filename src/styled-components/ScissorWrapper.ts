@@ -9,6 +9,11 @@ const ScissorWrapper = styled.div`
   justify-content: center;
   background-color: #c76c1b;
   cursor: pointer;
+
+  @media screen and (min-width: 980px) {
+    width: 198px;
+    height: 202px;
+  }
 `;
 
 export default ScissorWrapper;

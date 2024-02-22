@@ -9,6 +9,11 @@ const RockWrapper = styled.div`
   justify-content: center;
   background-color: #9d1634;
   cursor: pointer;
+
+  @media screen and (min-width: 980px) {
+    width: 198px;
+    height: 202px;
+  }
 `;
 
 export default RockWrapper;

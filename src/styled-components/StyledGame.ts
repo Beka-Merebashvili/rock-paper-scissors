@@ -36,6 +36,20 @@ const StyledGame = styled.div`
     bottom: 100px;
     cursor: pointer;
   }
+
+  @media screen and (min-width: 980px) {
+    width: 476px;
+    height: 430px;
+    background-position: 6px 82px;
+    gap: 80px;
+    .bg {
+      width: 152px;
+      height: 152px;
+    }
+    img {
+      width: 50%;
+    }
+  }
 `;
 
 export default StyledGame;

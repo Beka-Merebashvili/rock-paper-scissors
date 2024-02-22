@@ -12,6 +12,7 @@ function App() {
   return (
     <>
       <Globalstyles />
+      <main>
       <Score score={score} />
       <Game
         setRules={setRules}
@@ -21,6 +22,7 @@ function App() {
         score={score}
       />
       {rules ? <Rules setRules={setRules} /> : null}
+      </main>
     </>
   );
 }
