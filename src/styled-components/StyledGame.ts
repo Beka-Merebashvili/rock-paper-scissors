@@ -54,7 +54,7 @@ const StyledGame = styled.div`
       width: 50%;
     }
     .rules {
-      bottom: 30px;
+      top: 92%;
       right: 30px;
     }
   }
