@@ -1,19 +1,29 @@
 import styled from "styled-components";
 import rulesImg from "../images/image-rules.svg";
 import closeIcon from "../images/icon-close.svg";
+import { motion } from "framer-motion"
+
 const Rules: React.FC<{ setRules: (value: boolean) => void }> = (props) => {
-  return (
-    <RurelsContainer>
-      <div className="wrapper">
-        <img
-          className="closeIcon"
-          src={closeIcon}
-          alt="closeIcon"
-          onClick={() => props.setRules(false)}
-        />
-        <img src={rulesImg} alt="rulesImg" />
-      </div>
-    </RurelsContainer>
+return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <RurelsContainer>
+          <div className="wrapper">
+            <img
+              className="closeIcon"
+              src={closeIcon}
+              alt="closeIcon"
+              onClick={() => props.setRules(false)}
+            />
+            <img src={rulesImg} alt="rulesImg" />
+          </div>
+        </RurelsContainer>
+      </motion.div>
+    </>
   );
 };
 
