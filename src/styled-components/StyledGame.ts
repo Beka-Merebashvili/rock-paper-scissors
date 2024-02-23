@@ -33,7 +33,7 @@ const StyledGame = styled.div`
     border: 1px solid #ffffff;
     border-radius: 6px;
     position: absolute;
-    bottom: 100px;
+    top: 600px;
     cursor: pointer;
   }
   .rules:hover {

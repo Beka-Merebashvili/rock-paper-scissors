@@ -67,7 +67,7 @@ const ResultContainer = styled.div`
     border: 1px solid #ffffff;
     border-radius: 6px;
     position: absolute;
-    bottom: 100px;
+    top: 700px;
     cursor: pointer;
   }
 

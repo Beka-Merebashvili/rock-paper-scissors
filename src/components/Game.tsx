@@ -49,7 +49,7 @@ const Game: React.FC<GameProps> = (props) => {
       props.setResult("You win!");
       props.setScore(props.score + 1);
     } else {
-      props.setResult("Bot wins!");
+      props.setResult("You Lose!");
     }
   };
 
