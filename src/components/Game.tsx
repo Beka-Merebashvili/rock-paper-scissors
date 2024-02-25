@@ -7,6 +7,7 @@ import ScissorWrapper from "../styled-components/ScissorWrapper";
 import RockWrapper from "../styled-components/RockWrapper";
 import StyledGame from "../styled-components/StyledGame";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 interface GameProps {
   setRules: (value: boolean) => void;
@@ -87,57 +88,68 @@ const Game: React.FC<GameProps> = (props) => {
   return (
     <>
       {playerChoice ? null : (
-        <StyledGame>
-          <PaperWrapper onClick={() => handlePlayerChoice("paper")}>
-            <div className="bg">
-              <img src={paper} alt="paperIcon" />
-            </div>
-          </PaperWrapper>
-          <ScissorWrapper onClick={() => handlePlayerChoice("scissors")}>
-            <div className="bg">
-              <img src={scissors} alt="scissorsIcon" />
-            </div>
-          </ScissorWrapper>
-          <RockWrapper onClick={() => handlePlayerChoice("rock")}>
-            <div className="bg">
-              <img src={rock} alt="rockIcon" />
-            </div>
-          </RockWrapper>
-          <button className="rules" onClick={() => props.setRules(true)}>
-            rules
-          </button>
-        </StyledGame>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <StyledGame>
+            <PaperWrapper onClick={() => handlePlayerChoice("paper")}>
+              <div className="bg">
+                <img src={paper} alt="paperIcon" />
+              </div>
+            </PaperWrapper>
+            <ScissorWrapper onClick={() => handlePlayerChoice("scissors")}>
+              <div className="bg">
+                <img src={scissors} alt="scissorsIcon" />
+              </div>
+            </ScissorWrapper>
+            <RockWrapper onClick={() => handlePlayerChoice("rock")}>
+              <div className="bg">
+                <img src={rock} alt="rockIcon" />
+              </div>
+            </RockWrapper>
+            <button className="rules" onClick={() => props.setRules(true)}>
+              rules
+            </button>
+          </StyledGame>
+        </motion.div>
       )}
 
       {playerChoice && botChoice && (
-        <ResultContainer>
-          <div className="renderChoise">
-            <div className="choise">
-              {renderChoice(playerChoice)}
-              <p>you picked</p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <ResultContainer>
+            <div className="renderChoise">
+              <div className="choise">
+                {renderChoice(playerChoice)}
+                <p>you picked</p>
+              </div>
+              <div className="choise">
+                {renderChoice(botChoice)}
+                <p>bot picked</p>
+              </div>
             </div>
-            <div className="choise">
-              {renderChoice(botChoice)}
-              <p>bot picked</p>
+            <div className="result">
+              <p>{props.result}</p>
+              <button
+                className="playAgain"
+                onClick={() => setPlayerChoice(null)}
+              >
+                play again
+              </button>
             </div>
-          </div>
-          <div className="result">
-            <p>{props.result}</p>
-            <button className="playAgain" onClick={() => setPlayerChoice(null)}>
-              play again
+            <button className="rules" onClick={() => props.setRules(true)}>
+              rules
             </button>
-          </div>
-          <button className="rules" onClick={() => props.setRules(true)}>
-            rules
-          </button>
-        </ResultContainer>
+          </ResultContainer>
+        </motion.div>
       )}
     </>
   );
 };
-
-
-
-
 
 export default Game;
