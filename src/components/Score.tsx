@@ -1,21 +1,41 @@
 import styled from "styled-components";
 import logo from "../images/logo.svg";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface ScoreProps {
   score: number;
 }
 
 const Score: React.FC<ScoreProps> = (props) => {
+  const [y, setY] = useState(0);
+
+  useEffect(() => {
+    setY(20);
+  }, []);
+
   return (
-    <StyledDiv>
-      <div className="logo">
-        <img src={logo} alt="" />
-      </div>
-      <div className="scoreBox">
-        <p className="score">SCORE</p>
-        <p className="number">{props.score}</p>
-      </div>
-    </StyledDiv>
+    <motion.div animate={{ y }} transition={{ type: "spring", damping: 6 }}>
+      <StyledDiv>
+        <div className="logo">
+          <img src={logo} alt="" />
+        </div>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ rotate: 360, scale: 1 }}
+          transition={{
+            type: "spring",
+            stiffness: 160,
+            damping: 18,
+          }}
+        >
+          <div className="scoreBox">
+            <p className="score">SCORE</p>
+            <p className="number">{props.score}</p>
+          </div>
+        </motion.div>
+      </StyledDiv>
+    </motion.div>
   );
 };
 
@@ -62,23 +82,22 @@ const StyledDiv = styled.div`
     width: 700px;
     height: 150px;
     .logo {
-    width: 160px;
+      width: 160px;
+    }
+    .scoreBox {
+      width: 150px;
+      height: 114px;
+      gap: 4px;
+      padding-top: 8px;
+    }
+    .score {
+      font-size: 16px;
+      letter-spacing: 2.5px;
+    }
+    .number {
+      font-size: 64px;
+    }
   }
-  .scoreBox {
-    width: 150px;
-    height: 114px;
-    gap: 4px;
-    padding-top: 8px;
-  }
-  .score {
-    font-size: 16px;
-    letter-spacing: 2.5px;
-  }
-  .number {
-    font-size: 64px;
-  }
-  }
- 
 `;
 
 export default Score;
